@@ -58,4 +58,40 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function articles(): HasMany
+    {
+        return $this->hasMany('App\Models\Article');
+    }
+
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Models\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
+    }
+
+    public function followings(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Models\User', 'follows', 'follower_id', 'followee_id')->withTimestamps();
+    }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Models\Article', 'likes')->withTimestamps();
+    }
+
+    public function isFollowedBy(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->followers->where('id', $user->id)->count()
+            : false;
+    }
+
+    public function getCountFollowersAttribute(): int
+    {
+        return $this->followers->count();
+    }
+
+    public function getCountFollowingsAttribute(): int
+    {
+        return $this->followings->count();
+    }
 }
