@@ -20,17 +20,17 @@
      <div class="container">
        <div class="row"> 
      　　<div class="col">
-           <form action="{{ route('item.sell') }}" method="POST">
+           <form action="{{ route('item.sell',id->$id) }}" method="POST">
              
-           <img src="{{ $items->image_file_name_sub }}"　style="height: 500px;"></img>
+           <img src="{{ $item->image_file_name_sub }}"　style="height: 500px;"></img>
                 
 　　　　　　　　　　　
            <div>
-                    <h2>{{ $items->name }}</h2>
+                    <h2>{{ $item->name }}</h2>
                     <br>
-                    <h2>{{ $items->details }}</h2>
+                    <h2>{{ $item->details }}</h2>
                     <br>
-                    <h2>{{ $items->price }}</h2>
+                    <h2>{{ $item->price }}</h2>
                 </div>
             </div>
              </div>

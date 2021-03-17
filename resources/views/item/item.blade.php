@@ -11,7 +11,7 @@
          　　 @foreach ($items as $item)
          　　<div class="col">
          <form action="{{ route('item.item') }}" method="POST">
-         <a href="{{route('item.create',[$items->image_file_name])}}"><img src="{{ $item->image_file_name }}"　style="height: 500px;"></img></a>
+         <a href="{{route('item.create',['id' => $item->id])}}"><img src="{{ $item->image_file_name }}"　style="height: 500px;"></img></a>
 
 　　　　　　　　　　　<div>
                     <h2>{{ $item->name }}</h2>

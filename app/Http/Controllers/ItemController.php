@@ -17,24 +17,14 @@ class ItemController extends Controller
         return view('item.item', ['items' => $items]);
     }
 
-    public function create(Request $request, Item $items)
+    public function create(Request $request, Item $item)
     {
-        if(image_file_name === image_file_name){
-        $ids = Item::where('id', $items->id)->get();
-        $prices = Item::where('price',$items->price)->get();
-        $detail = Item::where('details', $items->details)->get();
-        $names = Item::where('name', $items->name)->get();
-        $image_file_name_subs = Item::where('image_file_name_sub', $items->image_file_name_sub)->get();
+        $item = Item::find($id);
         return view('item.sell',
          [
-           'items' => $items,
-           'ids' => $ids,
-           'prices' => $prices,
-           'detail'=> $detail,
-           'names'=> $names,
-           'image_file_name_subs'=> $image_file_name_subs,
+           'item' => $item,
+           'id' => $id,
            ]);
-        }
         }
 
 
@@ -65,6 +55,7 @@ class ItemController extends Controller
 
     public function destroy(Item $items)
      {
+        $item->delete;
          return redirect()->route('item.item');
      }
     
