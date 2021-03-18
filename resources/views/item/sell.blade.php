@@ -48,14 +48,8 @@
 
 
     <script>
-(function() {
-    'use strict';
-
-    // フラッシュメッセージのfadeout
-    $(function(){
-        $('.flash_message').fadeOut(3);
-    });
-
-})();
+ (function() {
+    setTimeout("$('.flash').fadeOut('slow')", 2000);
+  });
 </script>
 @endsection
