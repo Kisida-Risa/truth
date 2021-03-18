@@ -2,14 +2,15 @@
 
 @section('title', 'EC一覧')
 
+
 @section('content')
 @include('nav')
 
 <div class="container">
-      　<div class="row">
-         　　 @foreach ($items as $item)
-         　　<div class="col">
-         <a href="#"><img src="{{ $item->image_file_name }}"　style="height: 500px;"></img></a>
+   　<div class="row">
+   　　 @foreach ($items as $item)
+        　　<div class="col">
+   　　      　<img src="{{ $item->image_file_name }}"　style="height: 500px;"></img></a>
 
 　　　　　　　　　　　<div>
                     <h2>{{ $item->name }}</h2>
@@ -21,12 +22,12 @@
                     <h2>{{ $item->price }}</h2>
                     </div>
                     </div>
-        　　　　@endforeach
+                    　　　
 　　　　　　</div>
 　　　　</div>
-　　</div>
-@endsection
+
                   <form method="POST" action="{{ route('item.update', [['id' => $items->id]) }}">
+                  @csrf
                <button type="hidden" name="stock" value="{{ $item->id }}">
                   <button 
                    type = submit 

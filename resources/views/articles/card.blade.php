@@ -88,7 +88,7 @@
         <div class="card-text line-height">
     @endif
     <a href="{{ route('tags.show', ['name' => $tag->name]) }}" class="border p-1 mr-1 mt-1 text-muted">
-          {{----------ここまで追加----------}}
+      
             {{ $tag->hashtag }}
           </a>
     @if($loop->last)

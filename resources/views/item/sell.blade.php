@@ -5,27 +5,13 @@
 
 @section('content')
 @include('nav')
-    <div class="container">
-        <div class="row">
-            <div class="col-8 offset-2">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-            </div>
-        </div>
 
-        
-     <div class="container">
+    <div class="container">
        <div class="row"> 
      　　<div class="col">
-           <form action="{{ route('item.sell',id->$id) }}" method="POST">
-             
-           <img src="{{ $item->image_file_name_sub }}"　style="height: 500px;"></img>
+             <img src="{{ $item->image_file_name_sub }}"　style="height: 500px;"></img>
                 
-　　　　　　　　　　　
-           <div>
+　　　　　　　　　 <div>
                     <h2>{{ $item->name }}</h2>
                     <br>
                     <h2>{{ $item->details }}</h2>
@@ -41,6 +27,14 @@
                         <button type="submit" class="btn btn-block btn-secondary">
                             出品する
                         </button>
+
+                         <form action="{{ route('item.store',[$item->id]) }}" method="POST">
+                            @csrf
+                             <button type="submit" class="btn btn-block btn-secondary">
+                         　   カート一覧へ
+                            </button>
+                           </a>
+                         </form>
                     </div>
                 </form>
             </div>

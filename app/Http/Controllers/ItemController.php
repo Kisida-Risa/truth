@@ -17,7 +17,7 @@ class ItemController extends Controller
         return view('item.item', ['items' => $items]);
     }
 
-    public function create(Request $request, Item $item)
+    public function create(Request $request, int $id)
     {
         $item = Item::find($id);
         return view('item.sell',
@@ -28,16 +28,14 @@ class ItemController extends Controller
         }
 
 
-     public function store(Request $request, Item $items)
+     public function store(Request $request, int $id)
      {
-         echo $items->fill($request->all());
-         echo $items->name = $request->name;
-         echo $items->details = $request->details;
-         echo $items->price= $request->price;
-         echo $items->image_file_name_sub= $request->image_file_name_sub;
-         echo $items->save();
-         return view('item.sell', 
-         ['items' => $items]);  
+        $item = Item::find($id);
+        $item->fill($request->all());
+        $item->save();
+         return view('item.item', 
+         ['item' => $item,
+          'id' => $id])->with('flash_message', ‘商品をカートに追加しました’);  
      }
     
 
