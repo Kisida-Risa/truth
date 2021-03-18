@@ -36,7 +36,6 @@
                    style="width: 600px; height: 50px;">
                    カートに入れる
                   </button>
-               </button>
             </form>
           </div>
         @endforeach

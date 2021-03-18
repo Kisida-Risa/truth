@@ -6,6 +6,12 @@
 @section('content')
 @include('nav')
 
+@if (session('flash_message'))
+            <div class="flash_message bg-success text-center py-3 my-0">
+                {{ session('flash_message') }}
+            </div>
+        @endif
+
     <div class="container">
        <div class="row"> 
      　　<div class="col">
@@ -25,15 +31,13 @@
 　　　　   
                     <div class="form-group mb-0 mt-3">
                         <button type="submit" class="btn btn-block btn-secondary">
-                            出品する
+                            カートに入れる
                         </button>
 
                          <form action="{{ route('item.store',[$item->id]) }}" method="POST">
                             @csrf
                              <input type="submit" class="btn btn-block btn-secondary">
                          　   カート一覧へ
-                            </button>
-                           </a>
                          </form>
                     </div>
                 </form>
@@ -41,4 +45,17 @@
         </div>
     </div>
     
+
+
+    <script>
+(function() {
+    'use strict';
+
+    // フラッシュメッセージのfadeout
+    $(function(){
+        $('.flash_message').fadeOut(3);
+    });
+
+})();
+</script>
 @endsection

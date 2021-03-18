@@ -21,10 +21,10 @@ class ItemController extends Controller
     {
         $item = Item::find($id);
         return view('item.sell',
-         [
-           'item' => $item,
-           'id' => $id,
-           ]);
+        [
+          'item' => $item,
+          'id' => $id,
+          ]);
         }
 
 
@@ -33,10 +33,9 @@ class ItemController extends Controller
         $item = Item::find($id);
         $item->fill($request->all());
         $item->save();
-         return view('item.item', 
-         ['item' => $item,
-          'id' => $id])->with('flash_message', ‘商品をカートに追加しました’);  
-     }
+        return back()->with('flash_message', "商品をカートに追加しました"); 
+      }
+        
     
 
     public function update(Request $request, Item $items)
