@@ -26,9 +26,9 @@
 　　　　　　</div>
 　　　　</div>
 
-                  <form method="POST" action="{{ route('item.update', [['id' => $items->id]) }}">
+                  <form method="POST" action="{{ route('item.update', ['id' => $item->id]) }}">
                   @csrf
-               <button type="hidden" name="stock" value="{{ $item->id }}">
+               <input type="hidden" name="stock" value="{{ $item->id }}">
                   <button 
                    type = submit 
                    class="btn btn-outline-warning" 
@@ -37,7 +37,7 @@
                    カートに入れる
                   </button>
                </button>
-            </from>
+            </form>
           </div>
         @endforeach
         

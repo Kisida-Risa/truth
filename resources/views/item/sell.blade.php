@@ -30,7 +30,7 @@
 
                          <form action="{{ route('item.store',[$item->id]) }}" method="POST">
                             @csrf
-                             <button type="submit" class="btn btn-block btn-secondary">
+                             <input type="submit" class="btn btn-block btn-secondary">
                          　   カート一覧へ
                             </button>
                            </a>
