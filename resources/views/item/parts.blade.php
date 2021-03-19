@@ -25,26 +25,16 @@
                     　　　
 　　　　　　</div>
 　　　　</div>
-
-                  <form method="POST" action="{{ route('item.update', ['id' => $item->id]) }}">
-                  @csrf
-               <input type="hidden" name="stock" value="{{ $item->id }}">
-                  <button 
-                   type = submit 
-                   class="btn btn-outline-warning" 
-                   data-mdb-ripple-color="dark"
-                   style="width: 600px; height: 50px;">
-                   カートに入れる
-                  </button>
-            </form>
           </div>
         @endforeach
         
         <div>
-        <button type=submit >
-        　商品一覧へ
-        </butoon>
-        </div>
+        <form action="{{ route('item.store',[$item->id]) }}" method="POST">
+                       @csrf
+               <div class="form-group mb-0 mt-3">
+                <input type="submit" class="btn btn-block btn-secondary" value ="カート一覧へ">
+          </form>
+      </div>
     </div>
 </div>
 @endsection

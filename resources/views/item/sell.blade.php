@@ -28,16 +28,15 @@
              </div>
 
         </div>
-　　　　   
+        　　　　   <form action="{{ route('item.store',[$item->id]) }}" method="POST">
+                       @csrf
                     <div class="form-group mb-0 mt-3">
                         <button type="submit" class="btn btn-block btn-secondary">
                             カートに入れる
                         </button>
 
-                         <form action="{{ route('item.store',[$item->id]) }}" method="POST">
-                            @csrf
-                             <input type="submit" class="btn btn-block btn-secondary">
-                         　   カート一覧へ
+                           
+                             <input type="submit" class="btn btn-block btn-secondary" value ="カート一覧へ">
                          </form>
                     </div>
                 </form>

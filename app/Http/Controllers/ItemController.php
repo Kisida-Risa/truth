@@ -14,6 +14,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all()->sortByDesc('created_at');
+        dd();
         return view('item.item', ['items' => $items]);
     }
 
@@ -33,7 +34,7 @@ class ItemController extends Controller
         $item = Item::find($id);
         $item->fill($request->all());
         $item->save();
-        return back()->with('flash_message', "商品をカートに追加しました"); 
+        return view('item.item')->with('flash_message', "商品をカートに追加しました"); 
       }
         
     
@@ -78,14 +79,24 @@ class ItemController extends Controller
 
    
 
-     public function search(Request $request){
-            $keyword = $request->input('name'); 
-        if(!empty($keyword)){
+     public function search(Request $request, Item $item)
+     {
+            $keyword = $request->input('keyword'); 
+            $stock = $repuest->input('stock');
             $query = Item::query();
-            $users = $query->where('name','like', '%' .$keyword. '%')->get();
+
+        if(!empty($keyword)){
+            $query->where('name','like', "%$keyword%")->get();
+            $query->orWhere('price', 'LIKE', "%$stock%")->get();
         }
-       return view('/search')->with([
-        'users' => $users,
-      ]);
+
+        $items = $query->get();
+ 
+       return view('item.search',
+       [
+       'items'=> $items,
+       'keyword'=>$keyword,
+       'stock' =>$stock
+       ]);
      }
 }

@@ -3,8 +3,10 @@
 @section('title', 'SNS一覧')
 
 @section('content')
+
 @include('nav')
 
+@include('search')
 
 <div class="container">
       　<div class="row">
