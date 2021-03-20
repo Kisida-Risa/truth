@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bac7a0edf2b3b213bc655dd8c94cd6f",
+    "content-hash": "1ae8ab1652d553acacc52e9d1898b4b4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1126,6 +1126,129 @@
                 }
             ],
             "time": "2020-06-13T08:05:20+00:00"
+        },
+        {
+            "name": "larasocket/larasocket-driver",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/larasocket/larasocket-driver.git",
+                "reference": "43f709ec2383cbc0805f82df0cc0f39e5a38573f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/larasocket/larasocket-driver/zipball/43f709ec2383cbc0805f82df0cc0f39e5a38573f",
+                "reference": "43f709ec2383cbc0805f82df0cc0f39e5a38573f",
+                "shasum": ""
+            },
+            "type": "project",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Larasocket\\LarasocketServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Larasocket\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Zach Vander Velden",
+                    "email": "zachvv11@gmail.com"
+                }
+            ],
+            "description": "Pay as you go broadcast driver for Laravel.",
+            "homepage": "https://larasocket.com",
+            "keywords": [
+                "Broadcast",
+                "driver",
+                "larasocket",
+                "laravel",
+                "websocket"
+            ],
+            "support": {
+                "issues": "https://github.com/larasocket/larasocket-driver/issues",
+                "source": "https://github.com/larasocket/larasocket-driver/tree/master"
+            },
+            "time": "2020-08-16T15:40:57+00:00"
+        },
+        {
+            "name": "laravel-frontend-presets/tall",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-frontend-presets/tall.git",
+                "reference": "17838bad048ca1adf336bd99d56b0858af3ca020"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-frontend-presets/tall/zipball/17838bad048ca1adf336bd99d56b0858af3ca020",
+                "reference": "17838bad048ca1adf336bd99d56b0858af3ca020",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "laravel/ui": "^3.0",
+                "php": "^7.2.5|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelFrontendPresets\\Tall\\TallServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelFrontendPresets\\Tall\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dan Harrin",
+                    "email": "Dan@DanHarrin.com"
+                },
+                {
+                    "name": "Liam Hammett",
+                    "email": "liam@liamhammett.com"
+                },
+                {
+                    "name": "Ryan Chandler",
+                    "email": "support@ryangjchandler.co.uk"
+                }
+            ],
+            "description": "TALL preset for Laravel.",
+            "keywords": [
+                "alpine",
+                "alpinejs",
+                "laravel",
+                "livewire",
+                "preset",
+                "tailwind",
+                "tailwindcss",
+                "tailwindui",
+                "tall"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-frontend-presets/tall/issues",
+                "source": "https://github.com/laravel-frontend-presets/tall"
+            },
+            "time": "2021-01-15T09:50:21+00:00"
         },
         {
             "name": "laravel/fortify",

@@ -14,40 +14,37 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all()->sortByDesc('created_at');
-        dd();
         return view('item.item', ['items' => $items]);
     }
 
     public function create(Request $request, int $id)
     {
         $item = Item::find($id);
-        return view('item.sell',
-        [
-          'item' => $item,
-          'id' => $id,
-          ]);
+        return view('item.sell', compact($item,$id) );
         }
 
 
      public function store(Request $request, int $id)
      {
         $item = Item::find($id);
-        $item->fill($request->all());
+        $item = new Item;
+        $item->name = $request->name;
+        $item->price = $request->price;
+        $item->image_file_name_sub = $request->image_file_name_sub;
         $item->save();
-        return view('item.item')->with('flash_message', "商品をカートに追加しました"); 
+        
+        return view('item.item',
+        [
+        'items' => [],
+        'item' => $item,])
+        ->with('flash_message', "商品をカートに追加しました"); 
       }
         
     
 
     public function update(Request $request, Item $items)
     {
-        $items = DB::table(‘item’)->where(‘id’,[id])->first();
-        $request->session()->put('id', $id);
-        $request->session()->put('price',$price);
-        $request->session()->put('details', $details);
-        $request->session()->put('name', $name);
-        $request->session()->put('image_file_name_sub', $image_file_name_sub);
-        return view('item.sell');
+        return view('item.item',compact($item,$id));
     }
 
 
@@ -56,28 +53,6 @@ class ItemController extends Controller
         $item->delete;
          return redirect()->route('item.item');
      }
-    
-    public function saveImage(UploadedFile $file): string
-     {
-         $tempPath = $this->makeTempPath();
- 
-         Image::make($file)->fit(300, 300)->save($tempPath);
- 
-         $filePath = Storage::disk('public')
-             ->putFile('item-images', new File($tempPath));
- 
-         return basename($filePath);
-     }
-
-     public function makeTempPath(): string
-     {
-         $tmp_fp = tmpfile();
-         $meta   = stream_get_meta_data($tmp_fp);
-         return $meta["uri"];
-     }
-
-
-   
 
      public function search(Request $request, Item $item)
      {
