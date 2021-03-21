@@ -8,6 +8,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use Aoo\Models\Cart;
 
 class ItemController extends Controller
 {
@@ -20,13 +21,15 @@ class ItemController extends Controller
     public function create(Request $request, int $id)
     {
         $item = Item::find($id);
-        return view('item.sell', compact($item,$id) );
+        return view('item.sell', 
+        ['item' =>$item,
+        'id' =>$id,
+        ]);
         }
 
 
      public function store(Request $request, int $id)
      {
-        $item = Item::find($id);
         $item = new Item;
         $item->name = $request->name;
         $item->price = $request->price;
@@ -42,13 +45,13 @@ class ItemController extends Controller
         
     
 
-    public function update(Request $request, Item $items)
+    public function update(Request $request, int $id)
     {
         return view('item.item',compact($item,$id));
     }
 
 
-    public function destroy(Item $items)
+    public function destroy(Request $request, int $id)
      {
         $item->delete;
          return redirect()->route('item.item');

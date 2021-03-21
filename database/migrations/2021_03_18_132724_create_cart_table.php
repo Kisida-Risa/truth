@@ -15,6 +15,10 @@ class CreateCartTable extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->id();
+            $table->string('sub_name');
+            $table->text('sub_details')->nullable();
+            $table->unsignedInteger('sub_price');
+            $table->string('sub_image_file_name')->nullable();
             $table->timestamps();
         });
     }

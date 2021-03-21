@@ -21,36 +21,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
 
-Route::middleware('guest')->group(function () {
-    Route::get('login', Login::class)
-        ->name('login');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
-    Route::get('register', Register::class)
-        ->name('register');
+Route::get('/', 'ItemController@index')->name('item.item');
+Route::get('item/sell/{id}','ItemController@create')->name('item.create');
+Route::post('item/parts/{id}', 'ItemController@store')->name('item.store');
+
+Route::get('/search', 'ItemController@search')->name('item.search');
+Route::get('articles/index', 'ArticleController@index')->name('articles.index');
+Route::resource('/articles', 'ArticleController')->middleware('auth');
+Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth'); 
+Route::resource('/articles', 'ArticleController')->only(['show']);
+
+Route::prefix('articles')->name('articles.')->group(function () {
+    Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
+    Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
+});
+Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{name}', 'UserController@show')->name('show');
+    Route::middleware('auth')->group(function () {
+        Route::put('/{name}/follow', 'UserController@follow')->name('follow');
+        Route::delete('/{name}/follow', 'UserController@unfollow')->name('unfollow');
+    });
 });
 
-Route::get('password/reset', Email::class)
-    ->name('password.request');
-
-Route::get('password/reset/{token}', Reset::class)
-    ->name('password.reset');
-
-Route::middleware('auth')->group(function () {
-    Route::get('email/verify', Verify::class)
-        ->middleware('throttle:6,1')
-        ->name('verification.notice');
-
-    Route::get('password/confirm', Confirm::class)
-        ->name('password.confirm');
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('email/verify/{id}/{hash}', EmailVerificationController::class)
-        ->middleware('signed')
-        ->name('verification.verify');
-
-    Route::post('logout', LogoutController::class)
-        ->name('logout');
-});
+Auth::routes();

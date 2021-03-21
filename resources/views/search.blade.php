@@ -1,7 +1,7 @@
 <h1>検索</h1>
  
 <form action="{{route('item.search')}}" method="GET">
-  <div>
+  <div class="#">
     <p><input type="text" name="keyword" value="$keyword"></p>
     <p><input type="name" name="stock" value="$stock"></p>
     <p><input type="submit" value="検索"></p>
@@ -10,8 +10,8 @@
 
  
 
- 
-<table border="1">
+  @if(!empty($keyword)) 
+   <table border="1">
     <tr>
         <th>name</th>
         <th>price</th>
@@ -25,4 +25,5 @@
     </tr>
     @endforeach
 </table>
+@endif
  
