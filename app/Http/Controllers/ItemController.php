@@ -30,12 +30,12 @@ class ItemController extends Controller
 
      public function store(Request $request, int $id)
      {
-        $item = new Item;
-        $item->name = $request->name;
-        $item->price = $request->price;
-        $item->image_file_name_sub = $request->image_file_name_sub;
-        $item->save();
-        
+        $item = Item::find($id);
+        $cart->fill([
+            'sub_name' => $item->name,
+            'sub_price' => $item->price,
+        'sub_image_file_name' => $item->sub_image_file_name,
+           ])->save();
         return view('item.item',
         [
         'items' => [],
@@ -59,7 +59,7 @@ class ItemController extends Controller
 
      public function search(Request $request, Item $item)
      {
-            $keyword = $request->input('keyword'); 
+            $keyword = $request->input('keyword');   
             $stock = $repuest->input('stock');
             $query = Item::query();
 

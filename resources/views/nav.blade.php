@@ -1,31 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FF773E;">
-
+<nav class="navbar navbar-expand-lg navbar-light" 
+     style="background-color: #FF773E; margin-top: 0px;">
   <i class="far fa-sticky-note mr-1"></i>ギタビギ</a>
 
-
     @guest
-    <li class="nav-item">
-    <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
-    </li>
-  
-    <li class="nav-item">
-      <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-    </li>
-
-    <li class="nav-item bg-default rounded">
-        <a class="nav-link waves-effect waves-light" href="#"><i class="fas fa-user-check mr-1"></i>かんたんログイン</a>
-      </li>
+    <div class="flex flex-nowrap">
+    <div>
+       <a class="nav-link" href="{{ route('register') }}"><p class="text-4xl ...">ユーザー登録</p></a>
+        </div>
+        <br>
+         <div>
+           <a class="nav-link" href="{{ route('login') }}"><p class="text-4xl ...">ログイン</p></a>
+           </div>
+           <br>
+           <form action="{{route('item.search')}}" method="GET">
+            @csrf
+            <div class="flex flex-nowrap">
+           <div><p>検索</p></div>
+         <div class="border-solid border-4 border-light-blue-500 ..."><input type="text"  name="keyword" value="$keyword"></div>
+         </form>
+  </div>
+           
+      </div>
+      </div>
     @endguest 
 
-    @auth
-    <!-- <li class="nav-item"> -->
-      <!-- <a class="nav-link" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a> -->
-    <!-- </li> -->
-
-
-      <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a
+@auth
+   <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+     <li class="nav-item" role="presentation">
+      <a
       class="nav-link active"
       id="ex1-tab-1"
       data-mdb-toggle="tab"

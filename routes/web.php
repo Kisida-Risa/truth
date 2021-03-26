@@ -50,3 +50,13 @@ Route::prefix('users')->name('users.')->group(function () {
 });
 
 Auth::routes();
+
+Route::prefix('user')->middleware(['auth'])->group(function() {
+    Route::get('/ajax/index', 'StripeController@index');
+    Route::get('/ajax/status', 'StripeController@status');
+    Route::post('ajax/subscribe', 'StripeController@subscribe');
+    Route::post('ajax/cancel', 'StripeController@cancel');
+    Route::post('ajax/resume', 'StripeController@resume');
+    Route::post('ajax/change_plan', 'StripeController@change_plan');
+    Route::post('ajax/update_card', 'StripeController@update_card');
+});
