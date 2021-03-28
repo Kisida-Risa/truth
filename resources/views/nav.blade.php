@@ -71,14 +71,16 @@
           name="keyword"
           placeholder="Type query"
           aria-label="Search"
-        />
-        <button
-          class="btn btn-outline-primary"
-          type="button"
-          data-mdb-ripple-color="dark"
+          style="margin-left: 10px;"
         >
-          検索
-        </button>
+        <input
+          class="btn btn-outline-primary"
+          type="submit"
+          data-mdb-ripple-color="dark"
+          style="margin-right: 10px;"
+        ><a href="{{route('item.search') }}">
+          <p style="margin-right: 10px;">検索</p>
+          </a>
       </form>
     @endauth 
 
