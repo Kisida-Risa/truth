@@ -4,8 +4,6 @@
 
 @section('content')
 
-@include('nav')
-
 @include('search')
 
 <br>
@@ -49,7 +47,7 @@ style="height:1080px ;
     line-height: 20px;
     color: white;
     margin-left: 40px;">
-  カートに入れる
+   カートに入れる
 </button>
   </div>
 </div>
@@ -494,6 +492,50 @@ style="height:940px ;
   </div>
 </div>
 </div>
+
+
+<div class="flex flex-nowrap">
+@foreach ($items as $item)
+<div class="max-w-sm rounded overflow-hidden shadow-lg" 
+style="height:940px ; 
+       width:360px ;
+       margin-bottom: 0px;
+       margin-right: 30px;
+       margin-left: 30px;
+       text-align : center;
+       border: 5px solid #FFDBC9;">
+<div class="font-bold text-xl mb-2 text-5xl ...">
+{{ $item->name }}
+</div>
+
+<br>
+  <img src="{{ $item->image_file_name }}" 
+  style="height: 480px; width: 260px; 
+  display: inline-block;">
+  <div class="flex flex-col ...">
+  <div class="my-4 block text-gray-700 text-center bg-gray-400 px-4 py-2 text-3xl ..."
+  style="height: 70px; color: white; font-size: 55px;
+  line-height: 50px;">
+  モーリス　F351
+  </div>
+  <br>
+    <div><span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 text-3xl ...">
+    #弾きやすい
+    </span></div>
+    <br>
+    <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full text-3xl ..."
+    style="display: inline-block; 
+    width: 270px;
+    height: 55px; 
+    line-height: 20px;
+    color: white;
+    margin-left: 30px;">
+  カートに入れる
+</button>
+  </div>
+</div>
+@endforeach
+<div>
 
 
 <div class="container">
