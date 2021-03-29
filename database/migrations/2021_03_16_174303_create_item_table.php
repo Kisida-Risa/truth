@@ -17,9 +17,11 @@ class CreateItemTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('details')->nullable();
+            $table->text('a_details')->nullable();
+            $table->text('b_details')->nullable();
+            $table->text('c_details')->nullable();
             $table->unsignedInteger('price');
             $table->string('image_file_name')->nullable();
-            $table->string('image_file_name_sub')->nullable();
             $table->timestamps();
         });
     }

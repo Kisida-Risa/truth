@@ -4,7 +4,6 @@
 
 
 @section('content')
-@include('nav')
 
 <div class="max-w-sm w-full lg:max-w-full lg:flex">
   <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
@@ -54,7 +53,7 @@
         @endforeach
         
         <div>
-        <form action="{{ route('item.buy',[$item->id]) }}" method="POST">
+        
                        @csrf
                <div class="form-group mb-0 mt-3">
                 <input type="submit" class="btn btn-block btn-secondary" value ="カート一覧へ">
