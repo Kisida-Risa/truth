@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', 'ItemController@index')->name('item.item');
-Route::post('item/parts/{id}', 'ItemController@store')->name('item.store');
+Route::get('item/parts/{id}', 'ItemController@store')->name('item.store');
 
 Route::get('/search', 'ItemController@search')->name('item.search');
 Route::get('articles/index', 'ArticleController@index')->name('articles.index');

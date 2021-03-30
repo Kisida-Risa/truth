@@ -61,7 +61,7 @@ style="height:1190px ;
 </div>
 </div>
 @endforeach
-<form action="{{ route('item.store',[$item->id]) }}" method="POST">
+<form action="{{ route('item.store',[$item->id]) }}" method="GET">
     ＠csrf
 <div>
 </form>
