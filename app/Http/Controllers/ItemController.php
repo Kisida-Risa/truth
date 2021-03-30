@@ -15,18 +15,11 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all()->sortByDesc('created_at');
-        return view('item.item', ['items' => $items]);
+        return view('item.item', [
+            'items' => $items,
+            'item' => [],
+            ]);
     }
-
-    public function create(Request $request, int $id)
-    {
-        $item = Item::find($id);
-        return view('item.sell', 
-        ['item' =>$item,
-        'id' =>$id,
-        ]);
-        }
-
 
      public function store(Request $request, int $id)
      {
@@ -36,10 +29,11 @@ class ItemController extends Controller
             'sub_price' => $item->price,
         'sub_image_file_name' => $item->sub_image_file_name,
            ])->save();
-        return view('item.item',
+        return view('item.parts',
         [
         'items' => [],
-        'item' => $item,])
+        'item' => $item,
+        ])
         ->with('flash_message', "商品をカートに追加しました"); 
       }
         

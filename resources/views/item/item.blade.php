@@ -7,14 +7,13 @@
 @include('search')
 
 
-<form action="{{ route('item.item') }}" method="POST">
 
 <br>
 <br>
 <div class="h-48 flex flex-wrap content-between ..."
 style="display:flex ;
        flex-wrap:wrap ;">
-@foreach ($items as $item)
+       @foreach ($items as $item)
 <div><div class="max-w-sm rounded overflow-hidden shadow-lg" 
 style="height:1190px ; 
        width:640px ;
@@ -54,12 +53,16 @@ style="height:1190px ;
     line-height: 20px;
     color: white;
     margin-left: 40px;">
+<a href="{{route('item.store',[$item->id])}}">
   カートに入れる
+  </a>
 </button>
   </div>
 </div>
 </div>
 @endforeach
+<form action="{{ route('item.store',[$item->id]) }}" method="POST">
+    ＠csrf
 <div>
-
+</form>
 @endsection
