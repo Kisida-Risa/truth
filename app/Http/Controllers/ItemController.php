@@ -8,7 +8,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
-use Aoo\Models\Cart;
+use App\Models\Cart;
 
 class ItemController extends Controller
 {
@@ -23,16 +23,18 @@ class ItemController extends Controller
 
      public function store(Request $request, int $id)
      {
+        $cart = new Cart;
         $item = Item::find($id);
         $cart->fill([
             'sub_name' => $item->name,
             'sub_price' => $item->price,
-        'sub_image_file_name' => $item->sub_image_file_name,
+        'sub_image_file_name' => $item->image_file_name,
            ])->save();
-        return view('item.parts',
+        return redirect('item/parts',
         [
-        'items' => [],
         'item' => $item,
+        'carts' => [],
+        'cart' => $cart,
         ])
         ->with('flash_message', "商品をカートに追加しました"); 
       }

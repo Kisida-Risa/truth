@@ -48,7 +48,7 @@ style="height:1190px ;
     <br>
     <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full text-3xl ..."
     style="display: inline-block; 
-    width: 270px;
+    width: 300px;
     height: 55px; 
     line-height: 20px;
     color: white;
@@ -62,7 +62,7 @@ style="height:1190px ;
 </div>
 @endforeach
 <form action="{{ route('item.store',[$item->id]) }}" method="GET">
-    ＠csrf
-<div>
+  ＠csrf
+</div>
 </form>
 @endsection
