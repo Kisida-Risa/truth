@@ -20,38 +20,26 @@ class ItemController extends Controller
             'item' => [],
             ]);
     }
-
-     public function store(Request $request, int $id)
-     {
-        $cart = new Cart;
-        $item = Item::find($id);
-        $cart->fill([
-            'sub_name' => $item->name,
-            'sub_price' => $item->price,
-        'sub_image_file_name' => $item->image_file_name,
-           ])->save();
-        return redirect('item/parts',
-        [
-        'item' => $item,
-        'carts' => [],
-        'cart' => $cart,
-        ])
-        ->with('flash_message', "商品をカートに追加しました"); 
-      }
         
+      public function store(Request $request, int $id)
+      {
+         $cart = new Cart;
+         $item = Item::find($id);
+         $cart->fill([
+             'sub_name' => $item->name,
+             'sub_price' => $item->price,
+         'sub_image_file_name' => $item->image_file_name,
+            ])->save();
+         return redirect()->route('item.item',
+         [
+         'item' => $item,
+         'carts' => [],
+         'cart' => $cart,
+         'id' => $id,
+         ])
+         ->with('flash_message', "商品をカートに追加しました"); 
+       }
     
-
-    public function update(Request $request, int $id)
-    {
-        return view('item.item',compact($item,$id));
-    }
-
-
-    public function destroy(Request $request, int $id)
-     {
-        $item->delete;
-         return redirect()->route('item.item');
-     }
 
      public function search(Request $request, Item $item)
      {
