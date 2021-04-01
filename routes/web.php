@@ -28,8 +28,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/', 'ItemController@index')->name('item.item');
 Route::post('item/item/{id}', 'ItemController@store')->name('item.store');
-Route::get('cart/index', 'CartController@index')->name('cart.index');
-Route::delete('cart/index/{id}', 'CartController@destroy')->name('cart.destroy');
+Route::get('cart/', 'CartController@index')->name('cart.index');
+Route::delete('cart/{id}', 'CartController@destroy')->name('cart.destroy');
 
 Route::get('/search', 'ItemController@search')->name('item.search');
 Route::get('articles/index', 'ArticleController@index')->name('articles.index');

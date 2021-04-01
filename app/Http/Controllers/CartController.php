@@ -13,8 +13,7 @@ class CartController extends Controller
        $cart->sub_name = $request->sub_name;
        $cart->sub_price = $request->sub_price;
        $cart->sub_image_file_name = $request->sub_image_file_name;
-       dd($cart->sub_name);
-       return view('cart.index',
+       return view('cart',
        [
        'carts' => [],
        'cart' => $cart,
@@ -25,6 +24,6 @@ class CartController extends Controller
      public function destroy(Request $request, int $id)
      {
         $cart->delete;
-         return redirect()->route('cart.index');
+         return redirect()->route('cart');
      }
 }
