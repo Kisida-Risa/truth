@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Cashier\Billable;
+use Illuminate\Database\Eloquent\Relations\belongsToMany;
+
 
 
 class User extends Authenticatable
@@ -97,4 +99,9 @@ class User extends Authenticatable
     {
         return $this->followings->count();
     }
+
+    public function Item(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Models\Item', 'cart');
+    }    
 }

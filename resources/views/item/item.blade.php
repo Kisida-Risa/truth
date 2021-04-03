@@ -46,35 +46,34 @@ style="height:1190px ;
     </span></div>
     
     <br>
-    <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full text-3xl ..."
+    <form action="{{ route('item.store',[$item->id]) }}" method="POST">
+     @csrf
+    <input class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full text-3xl ..."
     style="display: inline-block; 
     width: 300px;
     height: 55px; 
     line-height: 20px;
     color: white;
-    margin-left: 40px;">
-<a href="{{route('item.store',[$item->id])}}">
-  カートに入れる
-  </a>
-</button>
+    margin-left: 40px;"
+    value="カートに入れる">
+  </form>
 <br>
-<button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full text-3xl ..."
+
+<button class="bg-blue-500 hover:bg-blue-700 text-black 
+font-bold py-2 px-4 rounded-full text-3xl ..."
     style="display: inline-block; 
     width: 300px;
     height: 55px; 
     line-height: 20px;
     color: white;
     margin-left: 40px;">
-<a href="{{route('cart.index')}}">
-  カート一覧へ
-  </a>
-</button>
+    <a href="{{ route('cart.index',[$cart->id]) }}">
+    カート一覧へ
+    </a>
+    </button>
   </div>
 </div>
 </div>
 @endforeach
-<form action="{{ route('item.store',[$item->id]) }}" method="POST">
-  ＠csrf
 </div>
-</form>
 @endsection

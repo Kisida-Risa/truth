@@ -4,20 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index(Request $request,Cart $id)
+    public function index(Request $request,Cart $cart)
     {
-       $cart= Cart::find($id);
-       $cart->sub_name = $request->sub_name;
-       $cart->sub_price = $request->sub_price;
-       $cart->sub_image_file_name = $request->sub_image_file_name;
+       $user = Auth::user();
+       $user->with('item')->find(auth()->id());
        return view('cart',
        [
        'carts' => [],
        'cart' => $cart,
-       'id' => [],
+       'user' => $user,
        ]);
      }
 

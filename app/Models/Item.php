@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Item extends Model
 {
     use HasFactory;
@@ -25,5 +26,9 @@ class Item extends Model
     public function condition()
     {
         return $this->belongsTo(ItemCondition::class, 'item_condition_id');
+    }
+    public function User()
+    {
+        return $this->belongsToMany('App\Models\User', 'cart');
     }
 }
