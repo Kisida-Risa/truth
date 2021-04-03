@@ -67,7 +67,7 @@ font-bold py-2 px-4 rounded-full text-3xl ..."
     line-height: 20px;
     color: white;
     margin-left: 40px;">
-    <a href="{{ route('cart.index',[$cart->id]) }}">
+    <a href="{{ route('cart.index') }}">
     カート一覧へ
     </a>
     </button>
