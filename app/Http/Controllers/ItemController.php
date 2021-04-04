@@ -25,17 +25,18 @@ class ItemController extends Controller
       {
          $cart = new Cart;
          $item = Item::find($id);
+         dd($item);
          $cart->fill([
              'sub_name' => $item->name,
              'sub_price' => $item->price,
-         'sub_image_file_name' => $item->image_file_name,
+             'sub_image_file_name' => $item->image_file_name,
+             'user_id' => auth()->id(),
             ])->save();
          return redirect()->route('item.item',
          [
          'item' => $item,
          'carts' => [],
          'cart' => $cart,
-         'id' => $id,
          ])
          ->with('flash_message', "商品をカートに追加しました"); 
        }

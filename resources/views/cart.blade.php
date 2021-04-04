@@ -19,10 +19,9 @@
        border: 5px solid #FFDBC9;
        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);">
 <div class="flex items-center">
-
-@foreach ($carts as $cart)
+@foreach ($users as $user)
 <p>
- {{ $cart->sub_name }}
+ {{ $user->name }}
 </p>
 @endforeach
 </div>
@@ -79,4 +78,14 @@
 <div>
 </div>
 </form>
+
+
+<div class="flex items-center">
+@foreach ($users as $user)
+<p>
+ {{ $user->name }}
+</p>
+@endforeach
+</div>
+
 @endsection
