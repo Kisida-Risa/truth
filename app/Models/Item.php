@@ -34,6 +34,6 @@ class Item extends Model
 
     public function users()
         {
-            return $this->belongsToMany('App\Models\User','cart')->withPivot('user_id');
+            return $this->belongsToMany('App\Models\User','cart')->withPivot('sub_name', 'sub_price', 'sub_image_file_name',);
         }
 }

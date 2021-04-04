@@ -107,6 +107,6 @@ class User extends Authenticatable
 
     public function Items()
         {
-            return $this->belongsToMany('App\Models\Item','cart')->withPivot('item_id');
+            return $this->belongsToMany('App\Models\Item','cart')->withPivot('sub_name', 'sub_price', 'sub_image_file_name',);
         }
 }
