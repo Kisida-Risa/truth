@@ -23,20 +23,17 @@ class ItemController extends Controller
         
       public function store(Request $request, int $id)
       {
-         $cart = new Cart;
-         $item = Item::find($id);
-         dd($item);
-         $cart->fill([
-             'sub_name' => $item->name,
-             'sub_price' => $item->price,
-             'sub_image_file_name' => $item->image_file_name,
-             'user_id' => auth()->id(),
-            ])->save();
+        $item = Item::find($id);
+        $item->user()->attach(auth()->id(),[
+          'sub_name' => $item->name,
+          'sub_price'=> $item->price,
+          'sub_image_file_name' => $item->image_file_name,
+        ]);
          return redirect()->route('item.item',
          [
          'item' => $item,
-         'carts' => [],
-         'cart' => $cart,
+         'user'  => [],
+         'id' =>$id,
          ])
          ->with('flash_message', "商品をカートに追加しました"); 
        }

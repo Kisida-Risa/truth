@@ -9,17 +9,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index(Request $request,Item $item)
+    public function index(Request $request,Cart $cart)
     {
        $user = Auth::user();
        $user->with('item')->find(auth()->id());
-       dd($user);
        return view('cart',
        [
        'items' => [],
        'item' => $item,
        'user' => $user,
        'users' => [],
+       'cart'=> $cart,
        ]);
      }
 

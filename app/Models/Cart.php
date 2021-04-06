@@ -17,14 +17,6 @@ class Cart extends Model
         'sub_details',
         'sub_price',
     ];
-    public function User()
-    {
-        $cart->users()->attach($user, 
-        ['sub_name',
-         'sub_price', 
-         'sub_image_file_name',
-         'user_id' 
-        ]);
-    }    
+    
 
 }
