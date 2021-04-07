@@ -12,20 +12,21 @@ class CartController extends Controller
     public function index(Request $request,Cart $cart)
     {
        $user = Auth::user();
-       $user->with('item')->find(auth()->id());
+       $items =auth()->user()->items;
        return view('cart',
        [
-       'items' => [],
-       'item' => $item,
-       'user' => $user,
-       'users' => [],
-       'cart'=> $cart,
+       'items' => $items,
        ]);
      }
 
      public function destroy(Request $request, int $id)
      {
-        $cart->delete;
-         return redirect()->route('cart');
+      $item = Item::find($id);
+      $item->user()->detach(auth()->id());
+         return redirect()->route('item.item',
+         [
+           'item' => $item,
+           'id' =>$id,
+         ])->with('success', '削除しました');
      }
 }

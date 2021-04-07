@@ -6,86 +6,70 @@
 @section('content')
 
 
-<div class="flex flex-col ...">
-<div>
-<div style="
-       height: 400px; 
-       width: 1000px;
-       margin-top: 50px;
-       margin-bottom: 100px;
-       margin-right: 50px;
-       margin-left: 50px;
-       text-align: center;
-       border: 5px solid #FFDBC9;
-       box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);">
-<div class="flex items-center">
-@foreach ($users as $user)
-<p>
- {{ $user->name }}
-</p>
-@endforeach
-</div>
-</div>
-</div>
 <br>
 <br>
-
-
-<form action="#" method=delete>
-  @csrf
 <div class="flex flex-col ...">
+@foreach ($items as $item)
 <div>
-<div style="
-       height: 400px; 
-       width: 1000px;
-       margin-top: 50px;
-       margin-bottom: 100px;
-       margin-right: 50px;
-       margin-left: 50px;
-       text-align: center;
-       border: 5px solid #FFDBC9;
-       box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);">
-<div class="flex items-center">
-      <img class="w-10 h-10 rounded-full mr-4" src="/image/top/yam-fs.jpeg"
-      style="
-      width: 290px; 
-      height: 350px;
-      margin-top: 10px;
-      text-align:left;
-      ">
-
-      <div class="text-sm">
-        <p class="text-gray-900 leading-none text-5xl ... text-yellow-500"
-        style="text-align: left;">
-        </p>
-        <br>
-        <br>
-        <br>
-        <p class="text-gray-900 leading-none text-5xl ... text-gray-600"
-        style="text-align: left;">
-        Aug 18</p>
-  <br>
-  <br>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-  Button
-</button>
-<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-  Button
-</button>
-      </div>
+    <div class="w-full lg:max-w-full lg:flex">
+      <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col 
+      justify-between leading-normal"
+      style="margin-bottom: 30px;
+      margin-left: 30px;">
+          <div class="text-gray-900 font-bold text-xl mb-2 text-4xl ..."
+          style="text-align:center ;">
+          {{ $item->pivot->sub_name }}
+          </div>
+        <div class="flex items-center">
+          <img class="w-10 h-10 rounded-full mr-4" src="{{ $item->pivot->sub_image_file_name }}" 
+          style="
+          height:350px ;
+          width:140px ;
+          display: inline-block;">
+          <div class="text-sm">
+          <div class="my-4 block text-gray-700 text-center bg-gray-400 px-4 py-2 text-3xl ..."
+             style="height: 50px; 
+             color: white; 
+             line-height: 50px;">
+              ¥{{ $item->pivot->sub_price }}
+               </div>
+            <br>
+            <br>
+      <form action="{{ route('cart.destroy',[$item->id]) }}" method="POST">
+      @csrf
       <div>
-</div>
-<div>
-</div>
-</form>
+      <input type="submit" value="削除する"
+      class="bg-blue-500 hover:bg-blue-700 text-black 
+     font-bold py-2 px-4 rounded-full text-3xl ..."
+      style="display: inline-block; 
+      width: 300px;
+      height: 55px; 
+      line-height: 20px;
+      margin-left: 40px;
+      color: white;">
+    </div>
+  </form>
+<br>
 
+<button class="bg-blue-500 hover:bg-blue-700 text-black 
+font-bold py-2 px-4 rounded-full text-3xl ..."
+    style="display: inline-block; 
+    width: 300px;
+    height: 55px; 
+    line-height: 20px;
+    color: white;
+    margin-left: 40px;">
+    <a href="{{ route('item.item') }}">
+    商品一覧へ
+    </a>
+    </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    @endforeach
+    </div>
 
-<div class="flex items-center">
-@foreach ($users as $user)
-<p>
- {{ $user->name }}
-</p>
-@endforeach
-</div>
 
 @endsection

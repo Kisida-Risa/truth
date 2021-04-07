@@ -98,12 +98,7 @@ class User extends Authenticatable
     public function getCountFollowingsAttribute(): int
     {
         return $this->followings->count();
-    }
-
-    public function Item(): BelongsToMany
-    {
-        return $this->belongsToMany('App\Models\Item', 'cart');
-    }    
+    }  
 
     public function Items()
         {
