@@ -1,18 +1,28 @@
-
-  @if(!empty($keyword)) 
+@if(!empty(request('search')))
    <table border="1">
     <tr>
         <th>name</th>
-        <th>price</th>
     </tr>
 
-    @foreach ($items as $item)
     <tr>
-        <td>{{ $item->name }}</td>
-
-        <td>{{ $item->price }}</td>
+        <td>{{ $search }}</td>
     </tr>
-    @endforeach
 </table>
+<br>
+<br>
+<div>
+<form action="{{ route('item.item') }}" method="POST">
+      @csrf
+      <input type="submit" value="商品一覧へ"
+      class="bg-blue-500 hover:bg-blue-700 text-black 
+     font-bold py-2 px-4 rounded-full text-3xl ..."
+      style="display: inline-block; 
+      width: 300px;
+      height: 55px; 
+      line-height: 20px;
+      margin-left: 40px;
+      color: white;">
+      </form>
+    </div>
 @endif
  

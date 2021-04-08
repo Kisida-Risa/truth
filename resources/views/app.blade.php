@@ -19,25 +19,52 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" 
      style="background-color: #FF773E; margin-top: 0px;">
-  <i class="far fa-sticky-note mr-1"></i>ギタビギ</a>
+  <p class="far fa-sticky-note mr-1 text-4xl ..."
+  style="color: white;
+  margin-left: 30px;">
+  ギタビギ
+  </p>
 
     @guest
     <div class="flex flex-nowrap">
     <div>
-       <a class="nav-link" href="{{ route('register') }}"><p class="text-4xl ...">ユーザー登録</p></a>
+       <a class="nav-link hover:bg-blue-700" href="{{ route('register') }}"><p class="text-4xl ..."
+       style="color: white;
+       margin-top: 5px;
+       margin-left: 30px;">
+       ユーザー登録
+       </p></a>
         </div>
-        <br>
+        
          <div>
-           <a class="nav-link" href="{{ route('login') }}"><p class="text-4xl ...">ログイン</p></a>
+           <a class="nav-link hover:bg-blue-700" href="{{ route('login') }}"><p class="text-4xl ..."
+           style="color: white;
+           margin-left: 20px;
+           margin-top: 5px;">
+           ログイン
+           </p></a>
            </div>
-           <br>
+           
+           <div>
            <form action="{{route('item.search')}}" method="GET">
             @csrf
-            <div class="flex flex-nowrap">
-           <div><p>検索</p></div>
-         <div class="border-solid border-4 border-light-blue-500 ..."><input type="text"  name="keyword" value="$keyword"></div>
+            <input type="submit" value="検索"
+            class="text-4xl ... hover:bg-blue-700"
+            style="
+           margin-left: 20px;
+           height: 80px;
+           line-height: 80px;
+           background-color: #CCCCCC;
+           color: #333333;">
+             </div>
+         <div
+         style="margin-left: 20px;">
+         <input type="text"  name="keyword" 
+         value="$keyword"
+         style="width: 370px; 
+         height: 70px;">
          </form>
-  </div>
+       </div>
            
       </div>
       </div>

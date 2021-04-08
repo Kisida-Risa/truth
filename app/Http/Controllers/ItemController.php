@@ -39,24 +39,17 @@ class ItemController extends Controller
        }
     
 
-     public function search(Request $request, Item $item)
+     public function search(Request $request, Item $keyword)
      {
-            $keyword = $request->input('keyword');   
-            $stock = $repuest->input('stock');
-            $query = Item::query();
-
-        if(!empty($keyword)){
-            $query->where('name','like', "%$keyword%")->get();
-            $query->orWhere('price', 'LIKE', "%$stock%")->get();
+        if (!empty($keyword)) {
+            Item::where('name', 'LIKE', "%{$keyword}%")->get();
         }
-
-        $items = $query->get();
- 
-       return view('item.search',
+        dd($search);
+       return view('search',
        [
-       'items'=> $items,
-       'keyword'=>$keyword,
-       'stock' =>$stock
+       'item'=> $item,
+       'search' =>$search,
+       'keyword' =>$keyword,
        ]);
-     }
+       }
 }
