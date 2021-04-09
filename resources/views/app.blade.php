@@ -46,7 +46,7 @@
            </div>
            
            <div>
-           <form action="{{route('item.search'}}" method="GET">
+           <form action="{{route('item.search')}}" method="GET">
             @csrf
             <input type="submit" value="検索"
             class="text-4xl ... hover:bg-blue-700"

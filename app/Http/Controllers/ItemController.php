@@ -42,7 +42,6 @@ class ItemController extends Controller
      public function search(Request $request, Item $keyword)
      {
       $bag = $request->input('keyword');
-      dd($bag);
       $keyword = Item::when($bag, function ($query, $bag) {
                           return $query->where('name', 'like', "%$bag%");
                       })
