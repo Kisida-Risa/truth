@@ -41,15 +41,16 @@ class ItemController extends Controller
 
      public function search(Request $request, Item $keyword)
      {
-        if (!empty($keyword)) {
-            Item::where('name', 'LIKE', "%{$keyword}%")->get();
-        }
-        dd($search);
+      $bag = $request->input('keyword');
+      $keyword = Item::when($bag, function ($query, $bag) {
+                          return $query->where('name', 'like', "%$bag%");
+                      })
+                      ->get();
+
        return view('search',
        [
-       'item'=> $item,
-       'search' =>$search,
        'keyword' =>$keyword,
+       'bag' =>$bag,
        ]);
        }
 }
