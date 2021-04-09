@@ -1,4 +1,4 @@
-@if(!empty($keyword)))
+@if(!empty($keyword))
    <table border="1">
     <tr>
         <th>name</th>
