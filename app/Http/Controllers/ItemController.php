@@ -43,14 +43,16 @@ class ItemController extends Controller
      {
       $bag = $request->input('keyword');
       $keyword = Item::when($bag, function ($query, $bag) {
-                          return $query->where('name',$bag)
+                          return $query->where('name','like',"%$bag%")
                           ->select('name');
                       })
                       ->get();
-       
+      $keywords=$keyword;
+      
        return view('search',
        [
        'keyword' =>$keyword,
+       'keywords' => $keywords,
        'bag' =>$bag,
        ]);
        }
